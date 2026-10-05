@@ -37,7 +37,8 @@ h3.sub { margin-top: 2.4rem; font-size: 1.2rem; }
 .facts span { font-size: .82rem; color: #B9CBDB; }
 .portrait { text-align: center; }
 .portrait img { width: 100%; max-width: 300px; height: auto; border-radius: 50%; border: 5px solid rgba(255,255,255,.18); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
-.portrait p { margin: 14px 0 0; font-weight: 700; color: #fff; } .portrait span { font-weight: 400; font-size: .88rem; color: #B9CBDB; }
+.portrait p { margin: 14px 0 0; font-weight: 700; color: #fff; } .portrait span { display: block; font-weight: 400; font-size: .88rem; color: #B9CBDB; }
+.portrait .pname { display: block; font-size: 1.45rem; line-height: 1.25; } .portrait .pdeg { font-size: 1.12rem; font-weight: 600; color: #7FD0D4; margin: 2px 0 4px; }
 
 .band { padding: 64px 0; } .band.alt { background: #EAF0F5; }
 .intro { max-width: 52em; color: #2C3A48; } .intro.small { font-size: .95rem; margin-top: -.2em; }
