@@ -67,8 +67,8 @@ export function initLab() {
     const d = Math.floor(live.t / 1440), hh = Math.floor((live.t % 1440) / 60), mm = live.t % 60;
     $("clock").textContent = `Day ${d}, ${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")} simulated`;
     const x0 = Math.max(1, d - series.oeeL.length + 1);
-    lineChart($("chOee"), [{ name: "your configuration", color: "#1F8A8F", data: series.oeeL }, { name: "periodic review", color: "#8A97A6", dash: [5, 4], data: series.oeeB }], { fmtY: (v) => (v * 100).toFixed(0) + " %", x0 });
-    lineChart($("chSec"), [{ name: "your configuration", color: "#2E8B57", data: series.secL }, { name: "periodic review", color: "#8A97A6", dash: [5, 4], data: series.secB }], { fmtY: (v) => v.toFixed(2), x0 });
+    lineChart($("chOee"), [{ name: "selected configuration", color: "#1F8A8F", data: series.oeeL }, { name: "periodic review", color: "#8A97A6", dash: [5, 4], data: series.oeeB }], { fmtY: (v) => (v * 100).toFixed(0) + " %", x0 });
+    lineChart($("chSec"), [{ name: "selected configuration", color: "#2E8B57", data: series.secL }, { name: "periodic review", color: "#8A97A6", dash: [5, 4], data: series.secB }], { fmtY: (v) => v.toFixed(2), x0 });
 
     const st = live.stations[selected];
     const stateTxt = { run: "running", maint: "planned maintenance", down: "breakdown" }[st.state];
