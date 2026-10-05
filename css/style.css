@@ -191,7 +191,7 @@ footer { background: #0F2540; color: #9FB3C8; font-size: .82rem; padding: 18px 0
   .hero-grid, .fw3-controls, .fw3-detail, .lab-grid, .matrix-grid, .b2b, .med-grid { grid-template-columns: 1fr; }
   .portrait { order: -1; } .portrait img { max-width: 180px; }
   .facts, .tiles, .value-grid, .hw-grid { grid-template-columns: repeat(2, 1fr); }
-  .fw3-stage { height: 400px; } .fw3-controls { gap: 8px; } .fw3-hint { font-size: .68rem; } .fw-story { min-height: 0; }
+  .fw3-stage { height: 400px; } .fw3-controls { gap: 8px; } .fw3-hint { font-size: .68rem; } .fw-story { min-height: 0; } .fw3-label.cap { display: none !important; }
   .kpi-cards, .case-cards, .proj-grid { grid-template-columns: 1fr; }
   .chart-grid { grid-template-columns: 1fr; }
   .scene { height: 340px; } .stage { min-height: 340px; }
