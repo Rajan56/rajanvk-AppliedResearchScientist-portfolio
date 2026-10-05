@@ -1,0 +1,26 @@
+{
+ "set_values": {
+  "n": 179,
+  "a": 0.146,
+  "b": 1.074,
+  "c": -0.055
+ },
+ "true_indirect": 0.1568,
+ "by_sample_size": {
+  "100": {
+   "trials": 300,
+   "mean_indirect": 0.1511,
+   "share_detected": 0.377
+  },
+  "179": {
+   "trials": 300,
+   "mean_indirect": 0.1625,
+   "share_detected": 0.613
+  },
+  "400": {
+   "trials": 300,
+   "mean_indirect": 0.1618,
+   "share_detected": 0.917
+  }
+ }
+}

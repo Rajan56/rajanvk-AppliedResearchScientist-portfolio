@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajan Kumar V K | Applied Research Scientist Portfolio</title>
+<meta name="description" content="Applied research portfolio of Rajan Kumar V K, D.Sc. (Tech.): digital twins, AI, IoT, KPI design and the twin transition in industry, with live demonstrators and published evidence.">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{ "imports": { "three": "./js/vendor/three.module.min.js" } }</script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top">Rajan Kumar V K</a>
+  <nav>
+    <a href="#framework">Framework</a>
+    <a href="#lab">KPI lab</a>
+    <a href="#cases">Case studies</a>
+    <a href="#mediation">Survey evidence</a>
+    <a href="#value">Value</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Applied research scientist &middot; industrial digitalisation</p>
+      <h1>Does the digital twin pay back, and for whom? I measure it.</h1>
+      <p class="lead">I study what happens when industrial firms take digital twins, AI and IoT into use: what changes in operations and decisions, what the change is worth, and what holds adoption back. This page shows the evidence from my doctoral research and lets you test the ideas in live demonstrators.</p>
+      <div class="cta">
+        <a class="btn primary" href="#lab">Open the 3D KPI lab</a>
+        <a class="btn" href="#cases">See the case study findings</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+      <ul class="facts">
+        <li><b>D.Sc. (Tech.)</b><span>Industrial Engineering and Management, LUT University, 2026</span></li>
+        <li><b>6</b><span>peer-reviewed publications, first author on all</span></li>
+        <li><b>179</b><span>Finnish SMEs in my survey study</span></li>
+        <li><b>4 countries</b><span>ITEA AIToC consortium, Award of Excellence 2024</span></li>
+      </ul>
+    </div>
+    <div class="portrait">
+      <img src="assets/rajan.jpg" alt="Portrait of Rajan Kumar V K" width="320" height="320">
+      <p>Rajan Kumar V K<br><span>Lahti, Finland &middot; open to relocation</span></p>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- ============ FRAMEWORK ============ -->
+<section id="framework" class="band">
+  <div class="wrap">
+    <p class="kicker">1 &middot; The research framework</p>
+    <h2>Technology does not improve sustainability by itself. Management practice carries the effect.</h2>
+    <p class="intro">This is the conceptual framework of my dissertation. Novel technologies, working inside a digital transformation, enable an enhanced form of performance management. That enhanced practice is the route to business, environmental and social results. Select any block to see what it means and which study supports it.</p>
+    <div class="fw-grid">
+      <div class="fw-diagram" id="fwDiagram" aria-label="Interactive conceptual framework"></div>
+      <aside class="panel" id="fwDetail" aria-live="polite"></aside>
+    </div>
+    <p class="note"><b>Scientific note.</b> Enhanced performance management is the integrating construct of the framework. It was built from theory and from the pattern across four studies. The survey study tested a neighbouring mediator, business sustainability capability, and the two should not be read as the same variable. Source: V K (2026), doctoral dissertation, LUT University, section 2.4.</p>
+  </div>
+</section>
+
+<!-- ============ KPI LAB ============ -->
+<section id="lab" class="band alt">
+  <div class="wrap">
+    <p class="kicker">2 &middot; Live demonstrator</p>
+    <h2>KPI lab: a production line managed by periodic review, then by a digital twin</h2>
+    <p class="intro">A simulated four-station line runs below. Switch on sensing, prediction and the twin layer and watch the indicators move against the same line run by periodic review. The point is the measurement logic: every indicator has a formula, a data source, an owner and a decision it serves.</p>
+
+    <div class="lab-grid">
+      <div class="stage">
+        <div id="scene" class="scene" role="img" aria-label="3D view of the simulated production line"></div>
+        <div class="scene-legend">
+          <span><i class="dot run"></i>running</span>
+          <span><i class="dot maint"></i>planned maintenance</span>
+          <span><i class="dot down"></i>breakdown</span>
+          <span class="hint">drag to rotate &middot; scroll to zoom &middot; click a station</span>
+        </div>
+        <div class="station-card" id="stationCard"></div>
+      </div>
+
+      <div class="panel controls">
+        <h3>Technology layers</h3>
+        <label class="switch"><input type="checkbox" id="swIot"><span></span><b>IoT sensing</b><small>condition monitoring on every station; faults are located in 5 minutes instead of 45</small></label>
+        <label class="switch"><input type="checkbox" id="swAi"><span></span><b>AI prediction</b><small>maintenance is called by measured condition, not by calendar</small></label>
+        <label class="switch"><input type="checkbox" id="swTwin"><span></span><b>Digital twin</b><small>virtual tuning cuts process-related defects; stopped stations go to standby</small></label>
+        <p class="dep" id="depNote"></p>
+        <h3>Operating point</h3>
+        <label class="slider">Speed setpoint <output id="speedOut">1.00</output><input type="range" id="speed" min="0.8" max="1.1" step="0.01" value="1"></label>
+        <label class="slider">Grid emission factor <output id="efOut">100 g CO2e/kWh</output><input type="range" id="ef" min="20" max="400" step="10" value="100"></label>
+        <label class="slider">Simulation speed
+          <select id="simSpeed"><option value="2">2 hours per second</option><option value="12" selected>12 hours per second</option><option value="48">2 days per second</option><option value="168">1 week per second</option></select>
+        </label>
+        <div class="btn-row">
+          <button class="btn primary" id="btnRun">Run</button>
+          <button class="btn" id="btnReset">Reset</button>
+        </div>
+        <p class="clock" id="clock">Day 0, 00:00</p>
+      </div>
+    </div>
+
+    <div class="tiles" id="tiles"></div>
+
+    <div class="chart-grid">
+      <figure class="panel"><figcaption>Overall equipment effectiveness per day</figcaption><canvas id="chOee" height="220"></canvas></figure>
+      <figure class="panel"><figcaption>Energy per good unit per day (kWh)</figcaption><canvas id="chSec" height="220"></canvas></figure>
+    </div>
+
+    <h3 class="sub">How each indicator is defined</h3>
+    <p class="intro small">An indicator that nobody owns, or that feeds no decision, is only a number. This is the specification I write for every KPI before any dashboard is built.</p>
+    <div class="kpi-cards" id="kpiCards"></div>
+
+    <h3 class="sub">Scenario comparison, computed in Python</h3>
+    <p class="intro small">Ninety simulated days, ten replications per scenario, mean and standard deviation. The Python model in the repository and the JavaScript model on this page use the same equations and the same random number generator, and they return identical values for the same seed.</p>
+    <div class="table-wrap"><table id="scenTable" class="data"></table></div>
+
+    <details class="assump">
+      <summary>Model assumptions and limits</summary>
+      <div id="assumptions"></div>
+      <p>The line is a teaching model. Its parameters are illustrative and were not measured in any company. It shows a mechanism and a way of measuring, and it should not be read as a forecast for a real plant. The mechanisms follow what the case companies described in my studies: condition data shortens fault location, prediction replaces calendar maintenance, and simulation removes waste before it happens.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section id="cases" class="band">
+  <div class="wrap">
+    <p class="kicker">3 &middot; Published evidence, made explorable</p>
+    <h2>Digital twins for sustainable performance in Industry 5.0: a multiple-case study</h2>
+    <p class="intro">Three companies, seven interviews, thirteen company documents, analysed with reflexive thematic analysis and a cross-case comparison. The study asked how digital twins contribute to sustainable performance, which challenges firms meet, and which technology synergies matter from a human-centric view.</p>
+
+    <div class="case-cards" id="caseCards"></div>
+
+    <h3 class="sub">Evidence matrix: which theme appeared in which case</h3>
+    <p class="intro small">Select a row to read the finding. Filled circle: in use or offered today. Half circle: planned or being explored. Dash: not reported in the data.</p>
+    <div class="matrix-grid">
+      <div class="table-wrap"><table class="matrix" id="matrix"></table></div>
+      <aside class="panel" id="matrixDetail" aria-live="polite"></aside>
+    </div>
+
+    <h3 class="sub">From barriers to benefits: explore the cross-case logic</h3>
+    <p class="intro small">The cross-case analysis found the same four barrier groups standing between the twin and its benefits. Mark a barrier as resolved and see which benefits it opens. A benefit opens only when every barrier it depends on is resolved.</p>
+    <div class="b2b">
+      <div id="b2b" class="b2b-svg"></div>
+      <div class="panel" id="b2bText" aria-live="polite"></div>
+    </div>
+    <p class="note"><b>Reading guide.</b> The themes, cases and barrier groups are taken from the published chapter. The links between single barriers and single benefits are my interpretation of the cross-case discussion, drawn for illustration. They are qualitative and carry no numerical weight. One case company reported fuel savings of up to 50 % in its own brochure; that is a company claim and was not measured in the study. Source: V K, Saunila, Ukko and Rantala (2026), in <i>Digital Manufacturing in Industry 5.0</i>, Springer. <a href="https://doi.org/10.1007/978-3-031-91500-0_35">doi.org/10.1007/978-3-031-91500-0_35</a></p>
+  </div>
+</section>
+
+<!-- ============ MEDIATION ============ -->
+<section id="mediation" class="band alt">
+  <div class="wrap">
+    <p class="kicker">4 &middot; Survey evidence, made testable</p>
+    <h2>Smart technologies improve environmental results only through business sustainability capability</h2>
+    <p class="intro">In a survey of 179 Finnish SMEs, analysed with covariance-based structural equation modelling, the direct path from smart technologies to environmental sustainability was not significant. The indirect path through business sustainability was. Below you can generate synthetic firms with the published path values, change the paths, and see when the indirect effect can be told apart from zero.</p>
+
+    <div class="med-grid">
+      <div class="panel">
+        <div id="pathDiagram"></div>
+        <div class="med-controls">
+          <label class="slider">Sample size n <output id="nOut">179</output><input type="range" id="mN" min="50" max="1000" step="1" value="179"></label>
+          <label class="slider">Path a: technology to business sustainability <output id="aOut">0.146</output><input type="range" id="mA" min="-0.2" max="0.6" step="0.002" value="0.146"></label>
+          <label class="slider">Path b: business to environmental sustainability <output id="bOut">1.074</output><input type="range" id="mB" min="0" max="1.4" step="0.002" value="1.074"></label>
+          <label class="slider">Path c': direct, technology to environmental sustainability <output id="cOut">-0.055</output><input type="range" id="mC" min="-0.4" max="0.6" step="0.005" value="-0.055"></label>
+          <div class="btn-row">
+            <button class="btn primary" id="btnSample">Draw a new sample</button>
+            <button class="btn" id="btnPublished">Reset to published values</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel" id="medResult" aria-live="polite"></div>
+        <div class="chart-grid two">
+          <figure class="panel"><figcaption>Technology use and business sustainability</figcaption><canvas id="scA" height="220"></canvas></figure>
+          <figure class="panel"><figcaption>Business and environmental sustainability</figcaption><canvas id="scB" height="220"></canvas></figure>
+        </div>
+      </div>
+    </div>
+    <div class="table-wrap"><table class="data" id="pubTable"></table></div>
+    <p class="note"><b>What is real and what is simulated.</b> The table gives the published estimates. The points and the live estimates come from synthetic data generated in your browser from those path values, with noise set so that the uncertainty at n = 179 is close to the published standard errors. Each construct is treated as one observed score, so the simulator illustrates the logic of mediation and does not reproduce the structural equation model. No survey response is stored or shown here. Source: V K, Saunila, Rantala and Ukko (2025), <i>Corporate Social Responsibility and Environmental Management, 32</i>(1), 835&ndash;848, open access. <a href="https://doi.org/10.1002/csr.2966">doi.org/10.1002/csr.2966</a></p>
+    <p class="note"><b>Power check in Python.</b> In 300 replications with the published path values, a bootstrap test found the indirect effect in 38 % of samples at n = 100, in 61 % at n = 179 and in 92 % at n = 400 (python/mediation_check.py in the repository). A weak first path needs a large sample, which is worth knowing before a follow-up survey is designed.</p>
+    <p class="implication"><b>Why this matters for a funded project.</b> If the effect runs through capability, a project that counts installed sensors will report success long before any environmental result exists. The impact framework has to measure the capability step as well: how the firm plans, decides and follows up with the new data.</p>
+  </div>
+</section>
+
+<!-- ============ VALUE ============ -->
+<section id="value" class="band">
+  <div class="wrap">
+    <p class="kicker">5 &middot; What I bring to a research and technology organisation</p>
+    <h2>Engineers build the technology. I show whether it works for the firm, and what it takes to adopt it.</h2>
+    <div class="value-grid" id="valueGrid"></div>
+
+    <h3 class="sub">Where this work sits</h3>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Type of research unit</th><th>What the unit needs</th><th>What I contribute</th><th>Evidence on this page</th></tr></thead>
+        <tbody>
+          <tr><td>Manufacturing, automation and digital twin groups</td><td>Proof that a pilot changes operational results, with indicators partners accept</td><td>KPI and impact frameworks, before and after measurement design, adoption barrier analysis</td><td>KPI lab; case study explorer</td></tr>
+          <tr><td>Technology management, innovation and sustainability groups</td><td>Empirical studies with firms on how transformation happens</td><td>Survey and case study design, statistical and qualitative analysis, peer-reviewed reporting</td><td>Survey evidence; publications</td></tr>
+          <tr><td>Foresight, business and ecosystem teams</td><td>Exploitation plans, business models and stakeholder maps for consortium projects</td><td>Exploitation and dissemination work package experience (ITEA AIToC), value chain and consortium mapping</td><td>Value section; bridge network twin</td></tr>
+          <tr><td>Energy and sustainable industry programmes</td><td>Links between digital investments and energy and emission results</td><td>Energy and carbon indicators tied to operations; twin transition measurement</td><td>KPI lab; hydrogen and wind turbine twins</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Units of these types exist at institutes such as VTT, SINTEF, RISE and Fraunhofer. The table describes kinds of units and makes no claim about any specific vacancy.</p>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="band alt">
+  <div class="wrap">
+    <p class="kicker">6 &middot; Other open demonstrators</p>
+    <h2>More live work, each with open source code</h2>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications" class="band">
+  <div class="wrap">
+    <p class="kicker">7 &middot; Publications</p>
+    <h2>Peer-reviewed work</h2>
+    <ol class="pubs" id="pubList"></ol>
+    <div class="method-strip" id="methodStrip"></div>
+  </div>
+</section>
+
+<section id="contact" class="band contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Rajan Kumar V K, D.Sc. (Tech.) &middot; Lahti, Finland &middot; permanent residence permit with an unrestricted right to work</p>
+    <p class="links">
+      <a href="mailto:rajanvk56@outlook.com">rajanvk56@outlook.com</a>
+      <a href="https://www.linkedin.com/in/rajan-kumar-v-k-0a541799/">LinkedIn</a>
+      <a href="https://orcid.org/0009-0005-0459-7291">ORCID</a>
+      <a href="https://github.com/Rajan56">GitHub</a>
+      <a href="https://rajan56.github.io/Teaching-Portfolio_RajanVK/">Teaching portfolio</a>
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>All simulations on this page use synthetic data and illustrative parameters. Published results are cited with their sources. Code: MIT licence. Text and figures: CC BY 4.0. 3D rendering with three.js (MIT).</p>
+    <p><a href="https://github.com/Rajan56/rajanvk-AppliedResearchScientist-portfolio">Source code of this page</a></p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
