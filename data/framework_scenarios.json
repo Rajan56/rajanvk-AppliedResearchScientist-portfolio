@@ -1,0 +1,90 @@
+[
+ {
+  "label": "Existing PM, no novel technology",
+  "ai": 0,
+  "iot": 0,
+  "dt": 0,
+  "readiness": 0.8,
+  "pm": 0.1636,
+  "business": 0.2111,
+  "environmental": 0.0293,
+  "social": 0.0938
+ },
+ {
+  "label": "AI",
+  "ai": 1,
+  "iot": 0,
+  "dt": 0,
+  "readiness": 0.8,
+  "pm": 0.3687,
+  "business": 0.414,
+  "environmental": 0.1498,
+  "social": 0.311
+ },
+ {
+  "label": "IoT",
+  "ai": 0,
+  "iot": 1,
+  "dt": 0,
+  "readiness": 0.8,
+  "pm": 0.4109,
+  "business": 0.4618,
+  "environmental": 0.2357,
+  "social": 0.2378
+ },
+ {
+  "label": "DT",
+  "ai": 0,
+  "iot": 0,
+  "dt": 1,
+  "readiness": 0.8,
+  "pm": 0.3695,
+  "business": 0.4278,
+  "environmental": 0.1522,
+  "social": 0.3118
+ },
+ {
+  "label": "AI + IoT",
+  "ai": 1,
+  "iot": 1,
+  "dt": 0,
+  "readiness": 0.8,
+  "pm": 0.6346,
+  "business": 0.675,
+  "environmental": 0.4778,
+  "social": 0.5134
+ },
+ {
+  "label": "AI + DT",
+  "ai": 1,
+  "iot": 0,
+  "dt": 1,
+  "readiness": 0.8,
+  "pm": 0.5713,
+  "business": 0.6155,
+  "environmental": 0.3478,
+  "social": 0.5429
+ },
+ {
+  "label": "IoT + DT",
+  "ai": 0,
+  "iot": 1,
+  "dt": 1,
+  "readiness": 0.8,
+  "pm": 0.6299,
+  "business": 0.6786,
+  "environmental": 0.4529,
+  "social": 0.5405
+ },
+ {
+  "label": "AI + IoT + DT",
+  "ai": 1,
+  "iot": 1,
+  "dt": 1,
+  "readiness": 0.8,
+  "pm": 0.7713,
+  "business": 0.7923,
+  "environmental": 0.6189,
+  "social": 0.7404
+ }
+]

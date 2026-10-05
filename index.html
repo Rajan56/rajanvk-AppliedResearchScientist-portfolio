@@ -30,7 +30,8 @@
       <h1>Does the digital twin pay back, and for whom? I measure it.</h1>
       <p class="lead">I study what happens when industrial firms take digital twins, AI and IoT into use: what changes in operations and decisions, what the change is worth, and what holds adoption back. This page shows the evidence from my doctoral research and lets you test the ideas in live demonstrators.</p>
       <div class="cta">
-        <a class="btn primary" href="#lab">Open the 3D KPI lab</a>
+        <a class="btn primary" href="#framework">Test the research framework in 3D</a>
+        <a class="btn" href="#lab">Open the KPI lab</a>
         <a class="btn" href="#cases">See the case study findings</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
@@ -46,6 +47,19 @@
       <p>Rajan Kumar V K<br><span>Lahti, Finland &middot; open to relocation</span></p>
     </div>
   </div>
+  <div class="wrap hero-work">
+    <p class="hw-title">Live work, one click away</p>
+    <div class="hw-grid">
+      <a class="hw" href="#framework"><span>This page &middot; 3D model</span><b>Dissertation framework</b><small>AI, IoT and digital twins in performance management</small></a>
+      <a class="hw" href="#lab"><span>This page &middot; simulation</span><b>KPI lab</b><small>A production line under periodic review and under a twin</small></a>
+      <a class="hw" href="https://rajan56.github.io/bridge-portfolio-learning-twin/"><span>Digital twin</span><b>Every Repair Teaches</b><small>Learning twin for a network of ageing bridges</small></a>
+      <a class="hw" href="https://rajan56.github.io/storage-minimised-hydrogen-twin/"><span>Digital twin &middot; energy</span><b>Hydrogen twin</b><small>Logistics intelligence as a substitute for storage</small></a>
+      <a class="hw" href="https://rajan56.github.io/turbine-digital-twin/"><span>Digital twin &middot; physics</span><b>Wind turbine twin</b><small>NREL 5 MW reference turbine with fault detection</small></a>
+      <a class="hw" href="https://rajan56.github.io/margin-recovery-case/"><span>Performance analytics</span><b>Margin recovery case</b><small>EBITDA bridge, scenario model and an AI agent</small></a>
+      <a class="hw" href="https://rajan56.github.io/DataAnalyticsWith-R/"><span>Statistics</span><b>Data analytics with R</b><small>Difference in differences and regression diagnostics</small></a>
+      <a class="hw" href="https://rajan56.github.io/concept-of-digital-twin/"><span>Concept</span><b>What a digital twin is</b><small>Five phases from design to retirement</small></a>
+    </div>
+  </div>
 </section>
 
 <main>
@@ -53,14 +67,60 @@
 <!-- ============ FRAMEWORK ============ -->
 <section id="framework" class="band">
   <div class="wrap">
-    <p class="kicker">1 &middot; The research framework</p>
-    <h2>Technology does not improve sustainability by itself. Management practice carries the effect.</h2>
-    <p class="intro">This is the conceptual framework of my dissertation. Novel technologies, working inside a digital transformation, enable an enhanced form of performance management. That enhanced practice is the route to business, environmental and social results. Select any block to see what it means and which study supports it.</p>
-    <div class="fw-grid">
-      <div class="fw-diagram" id="fwDiagram" aria-label="Interactive conceptual framework"></div>
-      <aside class="panel" id="fwDetail" aria-live="polite"></aside>
+    <p class="kicker">1 &middot; The research framework, as a model that can be tested</p>
+    <h2>Technology does not improve sustainability by itself. Enhanced performance management carries the effect.</h2>
+    <p class="intro">This is the conceptual model of my dissertation (Figure 3) built in 3D. Inside a digital transformation, AI, digital twins and IoT are integrated into existing performance management. The outcome is an enhanced performance management with eleven transformed practices, and that enhanced practice leads to business, environmental and social sustainability outcomes. Switch each technology on, alone or together, and follow the effect through the model.</p>
+
+    <div class="fw3-grid">
+      <div class="fw3-stage">
+        <div class="fw3-scene" id="fw3Scene" aria-label="3D conceptual framework. The same controls and values are available beside and below the view."></div>
+        <div class="fw3-labels" id="fw3Labels" aria-hidden="true"></div>
+        <div class="fw3-tip" id="fw3Tip" role="status"></div>
+        <p class="fw3-hint">Click AI, DT or IoT in the model &middot; drag to rotate &middot; scroll to zoom &middot; hover for detail</p>
+      </div>
+      <aside class="panel controls fw3-controls">
+        <div>
+        <h3>Novel technologies</h3>
+        <label class="switch ai"><input type="checkbox" id="fw_ai"><span></span><b>AI</b><small>Embedded intelligence: prediction, decision support, personalised feedback</small></label>
+        <label class="switch iot"><input type="checkbox" id="fw_iot"><span></span><b>IoT</b><small>Data infrastructure: real-time, granular data from processes and equipment</small></label>
+        <label class="switch dt"><input type="checkbox" id="fw_dt"><span></span><b>Digital twin</b><small>Virtual representation: what-if simulation, testing plans before implementation</small></label>
+        <div class="btn-row"><button class="btn primary" id="fwAll" type="button">Apply all three</button><button class="btn" id="fwReset" type="button">Reset</button></div>
+        </div>
+        <div>
+        <h3>Digital transformation context</h3>
+        <label class="slider">Organisational readiness <output id="fwReadyOut"></output>
+          <input type="range" id="fwReady" min="0" max="100" step="5" value="80">
+          <small>Strategic intent, cultural readiness and managerial competence. Technology that is installed but not embedded in decision routines changes little.</small>
+        </label>
+        <h3>What happens</h3>
+        <p class="fw-state" id="fwStateTitle"></p>
+        <p class="fw-story" id="fwStory" aria-live="polite"></p>
+        </div>
+        <div>
+        <h3>Result, index 0 to 100</h3>
+        <div class="fw-index" id="fwIndex"></div>
+        <p class="fw-key"><i class="was"></i> existing PM <i class="now"></i> with the selected technologies</p>
+        </div>
+      </aside>
     </div>
-    <p class="note"><b>Scientific note.</b> Enhanced performance management is the integrating construct of the framework. It was built from theory and from the pattern across four studies. The survey study tested a neighbouring mediator, business sustainability capability, and the two should not be read as the same variable. Source: V K (2026), doctoral dissertation, LUT University, section 2.4.</p>
+
+    <div class="fw3-detail">
+      <div class="panel">
+        <h3>Enhanced PM: the eleven transformed practices</h3>
+        <p class="small">Grey marks the level in existing performance management, colour the level reached now. A bold chip is a primary enabler, a light chip a supporting one.</p>
+        <ol class="fw-practices" id="fwPractices"></ol>
+      </div>
+      <div class="panel">
+        <h3>Sustainability performance</h3>
+        <p class="small">Each outcome is fed by the practices that produce it. Environmental outcomes are realised through business sustainability, as in the survey study.</p>
+        <div id="fwOutcomes"></div>
+        <h3 class="mt">Single and combined effects</h3>
+        <div class="table-wrap"><table class="data fw-combos"><thead><tr><th>Integrated technology</th><th>Enhanced PM</th><th>Business</th><th>Environ.</th><th>Social</th></tr></thead><tbody id="fwCombos"></tbody></table></div>
+        <p class="small">Select a row to load that combination. IoT data feed AI analytics and keep the twin current, so the technologies reinforce each other. This shows most clearly in the environmental outcomes, which need both enhanced practice and business sustainability.</p>
+      </div>
+    </div>
+
+    <p class="note"><b>What is from the dissertation and what is illustrative.</b> The blocks, the eleven practices, the outcome lists and the arrows follow Figure 3 of the dissertation, and the roles of AI, IoT and digital twins follow its section on novel technologies in performance management. The numbers are illustrative: I coded each technology as a primary or supporting enabler of each practice and chose the starting levels, so the index values show the logic of the framework and are not estimates from data. The same model runs in JavaScript on this page and in Python in the repository, with identical results. Source: V K (2026), doctoral dissertation, LUT University.</p>
   </div>
 </section>
 
@@ -236,6 +296,7 @@
     <p>Rajan Kumar V K, D.Sc. (Tech.) &middot; Lahti, Finland &middot; permanent residence permit with an unrestricted right to work</p>
     <p class="links">
       <a href="mailto:rajanvk56@outlook.com">rajanvk56@outlook.com</a>
+      <a href="tel:+358413258220">+358 41 32 58 220</a>
       <a href="https://www.linkedin.com/in/rajan-kumar-v-k-0a541799/">LinkedIn</a>
       <a href="https://orcid.org/0009-0005-0459-7291">ORCID</a>
       <a href="https://github.com/Rajan56">GitHub</a>

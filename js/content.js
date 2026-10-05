@@ -1,4 +1,4 @@
-// Framework diagram, case study explorer, barrier map and static lists.
+// Case study explorer, barrier map and static lists.
 const $ = (id) => document.getElementById(id);
 const NS = "http://www.w3.org/2000/svg";
 const el = (tag, attrs = {}, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
@@ -11,57 +11,6 @@ function wrapText(parent, text, x, y, maxChars, attrs = {}, lh = 16) {
   parent.appendChild(t); return t;
 }
 const clickable = (g, fn) => { g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.addEventListener("click", fn); g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); };
-
-/* ---------------- Framework ---------------- */
-const FW = {
-  context: { title: "Digital transformation context", tags: ["Dissertation"], body: "Firms reconfigure processes, structures and business models in response to digital opportunities. The framework places technology, management practice and outcomes inside this change, because the same sensor has a different effect in a firm that has changed how it decides than in one that has not." },
-  tech: { title: "Novel technologies: AI, IoT, digital twins", tags: ["Publication I", "Publication III", "Publication IV"], body: "Defined in the dissertation as technologies that bring new capabilities to performance management, not small improvements. IoT supplies condition and process data, AI finds patterns and predicts, and the digital twin joins both in a model that can be questioned before acting in the real plant." },
-  pm: { title: "Enhanced performance management", tags: ["Publication I", "Publication III"], body: "Linear, backward-looking review is replaced by four capabilities: real-time sensing, predictive analytics, continuous goal adjustment and collaborative visibility. This is the step where technology turns into changed management practice. It is the integrating construct of the framework." },
-  business: { title: "Business sustainability", tags: ["Publication II"], body: "Efficiency, competitiveness and the capability to run the business sustainably. In the survey of 179 Finnish SMEs, smart technologies had a positive, significant effect on business sustainability (coefficient 0.146, p = .032)." },
-  environmental: { title: "Environmental sustainability", tags: ["Publication II", "Publication IV"], body: "Emission reduction and resource optimisation. The survey found no significant direct effect of smart technologies (coefficient -0.055, p = .482). The effect ran through business sustainability (indirect effect 0.157, p = .034). The case studies show the mechanisms: energy monitoring, waste reduction and carbon reporting." },
-  social: { title: "Social sustainability", tags: ["Publication IV"], body: "Well-being, safety and inclusion. In the case studies this appeared as monitoring of working conditions and as operator training in simulated environments, which lets people practise with heavy machines without risk." },
-  barriers: { title: "Barriers that weaken the chain", tags: ["Publication IV"], body: "Data integration and standardisation, technical barriers, cost and complexity of scaling, and the skills gap. They were found in every case and weigh most on small and medium-sized firms." },
-  human: { title: "Human-centric approach", tags: ["Publication IV"], body: "All three case companies involved workers or clients in setting up and refining the twin. Technology that supports the user's own goals is adopted; technology that complicates the workflow is not." },
-};
-
-export function initFramework() {
-  const svg = el("svg", { viewBox: "0 0 760 440", role: "group" });
-  const defs = el("defs"); const mk = el("marker", { id: "arr", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" }); mk.appendChild(el("path", { d: "M0,0 L10,5 L0,10 z", fill: "#14304F" })); defs.appendChild(mk); svg.appendChild(defs);
-  const node = (id, x, y, w, h, fill, stroke, title, sub, tcol = "#14304F") => {
-    const g = el("g", { class: "fw-node", "data-id": id, "aria-label": FW[id].title });
-    g.appendChild(el("rect", { x, y, width: w, height: h, rx: 10, fill, stroke, "stroke-width": 2 }));
-    wrapText(g, title, x + w / 2, sub ? y + 24 : y + h / 2, Math.floor(w / 8), { "font-size": 14, "font-weight": 700, fill: tcol });
-    if (sub) sub.forEach((s, i) => { g.appendChild(el("rect", { x: x + 12, y: y + 50 + i * 34, width: w - 24, height: 26, rx: 6, fill: "#fff", stroke, "stroke-width": 1 })); g.appendChild(el("text", { x: x + w / 2, y: y + 64 + i * 34, "text-anchor": "middle", "dominant-baseline": "middle", "font-size": 12, fill: "#16202B" }, s)); });
-    clickable(g, () => select(id)); svg.appendChild(g); return g;
-  };
-  const ctx = el("g", { class: "fw-node", "data-id": "context" });
-  ctx.appendChild(el("rect", { x: 8, y: 8, width: 744, height: 306, rx: 14, fill: "#F5F7FA", stroke: "#8A97A6", "stroke-width": 2, "stroke-dasharray": "7 5" }));
-  ctx.appendChild(el("text", { x: 24, y: 30, "font-size": 12, "font-weight": 700, fill: "#5A6878", "letter-spacing": 1 }, "DIGITAL TRANSFORMATION CONTEXT"));
-  clickable(ctx, () => select("context")); svg.appendChild(ctx);
-
-  node("tech", 26, 62, 190, 196, "#E6EDF5", "#14304F", "Novel technologies", ["Artificial intelligence", "Internet of Things", "Digital twins"]);
-  node("pm", 272, 46, 216, 232, "#E3F2F2", "#1F8A8F", "Enhanced performance management", ["Real-time sensing", "Predictive analytics", "Continuous goal adjustment", "Collaborative visibility"]);
-  svg.appendChild(el("text", { x: 639, y: 56, "text-anchor": "middle", "font-size": 13, "font-weight": 700, fill: "#14304F" }, "Sustainability performance"));
-  node("business", 544, 68, 190, 56, "#FBEFD5", "#C97F06", "Business");
-  node("environmental", 544, 136, 190, 56, "#DFF1E6", "#2E8B57", "Environmental");
-  node("social", 544, 204, 190, 56, "#F3E3E0", "#B5483A", "Social");
-  svg.appendChild(el("line", { x1: 218, y1: 160, x2: 268, y2: 160, stroke: "#14304F", "stroke-width": 3, "marker-end": "url(#arr)" }));
-  svg.appendChild(el("line", { x1: 490, y1: 160, x2: 540, y2: 160, stroke: "#14304F", "stroke-width": 3, "marker-end": "url(#arr)" }));
-  svg.appendChild(el("text", { x: 243, y: 148, "text-anchor": "middle", "font-size": 11, fill: "#5A6878" }, "enable"));
-  svg.appendChild(el("text", { x: 515, y: 148, "text-anchor": "middle", "font-size": 11, fill: "#5A6878" }, "deliver"));
-  node("barriers", 26, 336, 440, 88, "#fff", "#B5483A", "Barriers: data standards, integration, cost, skills");
-  node("human", 486, 336, 248, 88, "#fff", "#1F8A8F", "Human-centric approach");
-  svg.appendChild(el("line", { x1: 246, y1: 334, x2: 246, y2: 180, stroke: "#B5483A", "stroke-width": 2, "stroke-dasharray": "5 4", "marker-end": "url(#arr)" }));
-  svg.appendChild(el("line", { x1: 610, y1: 334, x2: 514, y2: 180, stroke: "#1F8A8F", "stroke-width": 2, "stroke-dasharray": "5 4", "marker-end": "url(#arr)" }));
-  $("fwDiagram").appendChild(svg);
-
-  function select(id) {
-    svg.querySelectorAll(".fw-node").forEach((n) => n.classList.toggle("sel", n.dataset.id === id));
-    const d = FW[id];
-    $("fwDetail").innerHTML = `<h3>${d.title}</h3><p>${d.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</p><p>${d.body}</p>`;
-  }
-  select("pm");
-}
 
 /* ---------------- Cases ---------------- */
 const CASES = [
